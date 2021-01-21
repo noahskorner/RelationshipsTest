@@ -5,7 +5,7 @@
     Post newPost = new Post();
 }
 
-<h1>Details</h1>
+<h1>@Model.Name</h1>
 
 <div>
     <h4>What are you thinking?...</h4>
@@ -36,7 +36,8 @@
             @Html.DisplayFor(model => model.Url)
         </dd>
     </dl>
-    <h4>All Posts</h4>
+    <h4>@Model.Name Posts</h4>
+    <a asp-controller="Posts" asp-action="Index">View posts from all blogs</a>
     <hr/>
     <dl class="row">
         @foreach (Post post in @Model.Posts)

@@ -41,6 +41,9 @@ namespace RelationshipsTest.Data
                 .HasOne(pt => pt.Tag)
                 .WithMany(t => t.PostTags)
                 .HasForeignKey(pt => pt.TagId);
+            modelBuilder.Entity<Blog>()
+                .Property(b => b.Name)
+                .HasDefaultValue("");
         }
 
         public DbSet<RelationshipsTest.Models.PostTag> PostTag { get; set; }

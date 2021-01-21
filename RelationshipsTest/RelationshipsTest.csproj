@@ -9,6 +9,8 @@
     <Compile Remove="Migrations\20210121145519_AddBlogImageToDb.Designer.cs" />
     <Compile Remove="Migrations\20210121145922_InitialMigration.cs" />
     <Compile Remove="Migrations\20210121145922_InitialMigration.Designer.cs" />
+    <Compile Remove="Migrations\20210121211850_AddNameFieldToBlog.cs" />
+    <Compile Remove="Migrations\20210121211850_AddNameFieldToBlog.Designer.cs" />
   </ItemGroup>
 
   <ItemGroup>
