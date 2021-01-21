@@ -15,7 +15,7 @@ namespace RelationshipsTest.Models
         /// <summary>
         /// Many to one relationship with Blog. Each Post can belong to many different blogs. BlogId is the FK
         /// </summary>
-        public int? BlogId { get; set; }
+        public int BlogId { get; set; }
         public Blog Blog { get; set; }
 
         /// <summary>

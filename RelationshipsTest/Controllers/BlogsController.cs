@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -34,12 +35,13 @@ namespace RelationshipsTest.Controllers
             }
 
             var blog = await _context.Blogs
+                .Include(b => b.Posts)
                 .FirstOrDefaultAsync(m => m.BlogId == id);
+
             if (blog == null)
             {
                 return NotFound();
             }
-
             return View(blog);
         }
 

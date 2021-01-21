@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RelationshipsTest.Data;
 
 namespace RelationshipsTest.Migrations
 {
     [DbContext(typeof(RelationshipsTestContext))]
-    partial class RelationshipsTestContextModelSnapshot : ModelSnapshot
+    [Migration("20210121165501_ChangeDeleteBehavior")]
+    partial class ChangeDeleteBehavior
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -65,7 +67,7 @@ namespace RelationshipsTest.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("BlogId")
+                    b.Property<int?>("BlogId")
                         .HasColumnType("int");
 
                     b.Property<string>("Content")
@@ -125,8 +127,7 @@ namespace RelationshipsTest.Migrations
                     b.HasOne("RelationshipsTest.Models.Blog", "Blog")
                         .WithMany("Posts")
                         .HasForeignKey("BlogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
                 });
 
             modelBuilder.Entity("RelationshipsTest.Models.PostTag", b =>

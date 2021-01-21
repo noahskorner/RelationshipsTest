@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using RelationshipsTest.Data;
 
 namespace RelationshipsTest.Migrations
 {
     [DbContext(typeof(RelationshipsTestContext))]
-    partial class RelationshipsTestContextModelSnapshot : ModelSnapshot
+    [Migration("20210121165655_RevertDeleteBehavior")]
+    partial class RevertDeleteBehavior
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

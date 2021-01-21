@@ -81,7 +81,7 @@ namespace RelationshipsTest.Controllers
             {
                 _context.Add(post);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Details", "Blogs", new { id = post.BlogId});
             }
             ViewData["BlogId"] = new SelectList(_context.Blogs, "BlogId", "BlogId", post.BlogId);
             return View(post);

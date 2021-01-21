@@ -1,21 +1,54 @@
-﻿@model RelationshipsTest.Models.Blog
+﻿@model Blog
 
 @{
     ViewData["Title"] = "Details";
+    Post newPost = new Post();
 }
 
 <h1>Details</h1>
 
 <div>
+    <h4>What are you thinking?...</h4>
+    <form asp-controller="Posts" asp-action="Create">
+        <div class="form-group">
+            <label asp-for="@newPost.Title" class="control-label"></label>
+            <input asp-for="@newPost.Title" name="Title" class="form-control" />
+            <span asp-validation-for="@newPost.Title" class="text-danger"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="@newPost.Content" class="control-label"></label>
+            <input asp-for="@newPost.Content" name="Content" class="form-control" />
+            <span asp-validation-for="@newPost.Content" class="text-danger"></span>
+        </div>
+        <input type="hidden" asp-for="@newPost.BlogId" name="BlogId" value="@Model.BlogId"/>
+        <div class="form-group">
+            <input type="submit" value="Create" class="btn btn-primary" />
+        </div>
+    </form>
+    <hr/>
     <h4>Blog</h4>
-    <hr />
+    <hr/>
     <dl class="row">
-        <dt class = "col-sm-2">
+        <dt class="col-sm-2">
             @Html.DisplayNameFor(model => model.Url)
         </dt>
-        <dd class = "col-sm-10">
+        <dd class="col-sm-10">
             @Html.DisplayFor(model => model.Url)
         </dd>
+    </dl>
+    <h4>All Posts</h4>
+    <hr/>
+    <dl class="row">
+        @foreach (Post post in @Model.Posts)
+        {
+            <dt class="col-sm-2">
+                Post @post.Title
+            </dt>
+            <dd class="col-sm-10">
+                @post.Content
+            </dd>
+        }
+
     </dl>
 </div>
 <div>
